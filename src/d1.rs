@@ -1,5 +1,3 @@
-use std::fs;
-
 pub fn a(input: &str) -> i32 {
     let mut dial = 50;
     let mut zeros = 0;
