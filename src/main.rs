@@ -4,8 +4,7 @@ mod d2;
 #[macro_export]
 macro_rules! solution {
     ($feature_name:literal: $solution:path, $input_file:literal) => {
-        #[cfg(feature = $feature_name)]
-        {
+        if cfg!(feature = $feature_name) {
             use std::fs;
 
             let file = fs::read_to_string(format!("inputs/{}", $input_file)).unwrap();
@@ -30,4 +29,5 @@ fn main() {
     solution!("1a": d1::a, "1.txt");
     solution!("1b": d1::b, "1.txt");
     solution!("2a": d2::a, "2.txt");
+    solution!("2b": d2::b, "2.txt");
 }
