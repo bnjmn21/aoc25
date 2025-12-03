@@ -40,9 +40,9 @@ pub fn b(input: &str) -> u64 {
                 .unwrap();
             start += max_i + 1;
             end += 1;
-            digits = (digits + max) * 10;
+            digits = (digits * 10) + max;
         }
-        res += digits / 10;
+        res += digits;
     }
     res
 }
