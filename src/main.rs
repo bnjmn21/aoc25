@@ -1,6 +1,7 @@
 mod d1;
 mod d2;
 mod d3;
+mod d4;
 
 #[macro_export]
 macro_rules! solution {
@@ -33,4 +34,6 @@ fn main() {
     solution!("2b": d2::b, "2.txt");
     solution!("3a": d3::a, "3.txt");
     solution!("3b": d3::b, "3.txt");
+    solution!("4a": d4::a, "4.txt");
+    solution!("4b": d4::b, "4.txt");
 }
