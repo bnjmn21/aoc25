@@ -70,7 +70,13 @@ pub fn b(input: &str) -> u64 {
 #[cfg(test)]
 mod tests {
     use crate::test_solution;
+
     use super::*;
+
+    #[test]
+    fn a_example() {
+        test_solution!(a, "5_example.txt" => 3);
+    }
 
     #[test]
     fn b_example() {

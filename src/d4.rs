@@ -44,7 +44,7 @@ pub fn a(input: &str) -> u32 {
 
 pub fn b(input: &str) -> u32 {
     let input = input.as_bytes();
-    let width = input.iter().position(|c| *c == b'\n').unwrap();
+    let width = input.iter().position(u8::is_ascii_whitespace).unwrap();
     let height = input.iter().filter(|c| **c == b'\n').count() + 1;
     let mut data = Vec::with_capacity(height);
     let mut row = Vec::with_capacity(width);
@@ -94,7 +94,7 @@ pub fn b(input: &str) -> u32 {
     res
 }
 
-fn get_bit(data: &Vec<Vec<bool>>, x: isize, y: isize) -> bool {
+fn get_bit(data: &[Vec<bool>], x: isize, y: isize) -> bool {
     if x < 0 || y < 0 {
         return false;
     }
@@ -103,4 +103,21 @@ fn get_bit(data: &Vec<Vec<bool>>, x: isize, y: isize) -> bool {
         .and_then(|row| row.get(x as usize))
         .cloned()
         .unwrap_or(false)
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::test_solution;
+
+    use super::*;
+
+    #[test]
+    fn a_example() {
+        test_solution!(a, "4_example.txt" => 13);
+    }
+
+    #[test]
+    fn b_example() {
+        test_solution!(b, "4_example.txt" => 43);
+    }
 }
