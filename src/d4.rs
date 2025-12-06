@@ -16,7 +16,7 @@ pub fn a(input: &str) -> u32 {
         }
     }
     data.push(row);
-    
+
     let mut res = 0;
     for (y, row) in data.iter().enumerate() {
         for (x, bit) in row.iter().enumerate() {
@@ -58,7 +58,7 @@ pub fn b(input: &str) -> u32 {
         }
     }
     data.push(row);
-    
+
     let mut res = 0;
     loop {
         let mut changes = vec![];
@@ -90,7 +90,7 @@ pub fn b(input: &str) -> u32 {
             }
         }
     }
-    
+
     res
 }
 
@@ -98,9 +98,8 @@ fn get_bit(data: &Vec<Vec<bool>>, x: isize, y: isize) -> bool {
     if x < 0 || y < 0 {
         return false;
     }
-    
-    data
-        .get(y as usize)
+
+    data.get(y as usize)
         .and_then(|row| row.get(x as usize))
         .cloned()
         .unwrap_or(false)
