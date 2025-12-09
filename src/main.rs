@@ -6,6 +6,7 @@ mod d5;
 mod d6;
 mod d7;
 mod d8;
+mod d9;
 
 #[macro_export]
 macro_rules! solution {
@@ -48,4 +49,6 @@ fn main() {
     solution!("7b": d7::b, "7.txt");
     solution!("8a": d8::a::<1000>, "8.txt");
     solution!("8b": d8::b, "8.txt");
+    solution!("9a": d9::a, "9.txt");
+    solution!("9b": d9::b, "9.txt");
 }
