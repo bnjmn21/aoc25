@@ -5,10 +5,11 @@ mod d4;
 mod d5;
 mod d6;
 mod d7;
+mod d8;
 
 #[macro_export]
 macro_rules! solution {
-    ($feature_name:literal: $solution:path, $input_file:literal) => {
+    ($feature_name:literal: $solution:expr, $input_file:literal) => {
         if cfg!(feature = $feature_name) {
             use std::fs;
 
@@ -21,7 +22,7 @@ macro_rules! solution {
 
 #[macro_export]
 macro_rules! test_solution {
-    ($solution:path, $input_file:literal => $expected:expr) => {
+    ($solution:expr, $input_file:literal => $expected:expr) => {
         use std::fs;
 
         let file = fs::read_to_string(format!("inputs/{}", $input_file)).unwrap();
@@ -45,4 +46,6 @@ fn main() {
     solution!("6b": d6::b, "6.txt");
     solution!("7a": d7::a, "7.txt");
     solution!("7b": d7::b, "7.txt");
+    solution!("8a": d8::a::<1000>, "8.txt");
+    solution!("8b": d8::b, "8.txt");
 }
