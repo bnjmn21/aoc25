@@ -1,19 +1,19 @@
 pub fn a(input: &str) -> u64 {
-    let coords: Vec<(i32, i32)> = input
+    let coords: Vec<(i64, i64)> = input
         .lines()
         .map(|line| {
             let (x, y) = line.split_once(',').unwrap();
             (x.parse().unwrap(), y.parse().unwrap())
         })
-        .collect::<Vec<_>>();
+        .collect();
 
     let len = coords.len();
 
     let mut max = 0;
     for a in 0..(len - 1) {
         for b in (a + 1)..len {
-            let size = ((coords[a].0 - coords[b].0).abs() as u64 + 1)
-                * ((coords[a].1 - coords[b].1).abs() as u64 + 1);
+            let size = ((coords[a].0 - coords[b].0).unsigned_abs() + 1)
+                * ((coords[a].1 - coords[b].1).unsigned_abs() + 1);
             if size > max {
                 max = size;
             }
@@ -23,7 +23,7 @@ pub fn a(input: &str) -> u64 {
 }
 
 pub fn b(input: &str) -> u64 {
-    let coords: Vec<(i32, i32)> = input
+    let coords: Vec<(i64, i64)> = input
         .lines()
         .map(|line| {
             let (x, y) = line.split_once(',').unwrap();
@@ -38,7 +38,7 @@ pub fn b(input: &str) -> u64 {
         for b in (a + 1)..len {
             let ca = &coords[a];
             let cb = &coords[b];
-            let size = ((ca.0 - cb.0).abs() as u64 + 1) * ((ca.1 - cb.1).abs() as u64 + 1);
+            let size = ((ca.0 - cb.0).unsigned_abs() + 1) * ((ca.1 - cb.1).unsigned_abs() + 1);
             if size > max {
                 let minpt = (ca.0.min(cb.0), ca.1.min(cb.1));
                 let maxpt = (ca.0.max(cb.0), ca.1.max(cb.1));
