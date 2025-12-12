@@ -4,6 +4,9 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+good_lp = { version = "1.14.2", features = [
+    "microlp",
+], default-features = false, optional = true }
 
 [features]
 1a = []
@@ -24,3 +27,5 @@ edition = "2024"
 8b = []
 9a = []
 9b = []
+10a = []
+10b = ["dep:good_lp"]
