@@ -1,5 +1,6 @@
 mod d1;
 mod d10;
+mod d11;
 mod d2;
 mod d3;
 mod d4;
@@ -53,5 +54,8 @@ fn main() {
     solution!("9a": d9::a, "9.txt");
     solution!("9b": d9::b, "9.txt");
     solution!("10a": d10::a, "10.txt");
+    #[cfg(feature = "10b")]
     solution!("10b": d10::b, "10.txt");
+    solution!("11a": d11::a, "11.txt");
+    solution!("11b": d11::b, "11.txt");
 }

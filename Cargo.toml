@@ -29,3 +29,5 @@ good_lp = { version = "1.14.2", features = [
 9b = []
 10a = []
 10b = ["dep:good_lp"]
+11a = []
+11b = []
