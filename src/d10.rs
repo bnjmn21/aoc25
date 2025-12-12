@@ -98,6 +98,7 @@ pub fn b(input: &str) -> u32 {
     res
 }
 
+#[cfg(feature = "10b")]
 #[derive(Default)]
 pub struct MachineB {
     buttons: Vec<Vec<usize>>,

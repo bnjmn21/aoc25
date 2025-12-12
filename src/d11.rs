@@ -6,20 +6,20 @@ pub fn a(input: &str) -> u64 {
         .map(|line| (line[0..3].to_owned(), line[5..].split(' ').collect()))
         .collect();
 
-    fn routes_to_out(devices: &HashMap<String, Vec<&str>>, from: &str) -> u64 {
-        devices[from]
-            .iter()
-            .map(|output| {
-                if *output == "out" {
-                    1
-                } else {
-                    routes_to_out(devices, output)
-                }
-            })
-            .sum()
-    }
-
     routes_to_out(&devices, "you")
+}
+
+fn routes_to_out(devices: &HashMap<String, Vec<&str>>, from: &str) -> u64 {
+    devices[from]
+        .iter()
+        .map(|output| {
+            if *output == "out" {
+                1
+            } else {
+                routes_to_out(devices, output)
+            }
+        })
+        .sum()
 }
 
 pub fn b(input: &str) -> u64 {
@@ -45,14 +45,6 @@ pub fn b(input: &str) -> u64 {
     let dac_id = devices_hashmap["dac"];
     let fft_id = devices_hashmap["fft"];
     let out_id = devices_hashmap["out"];
-
-    #[derive(Debug, Default, Clone, Copy)]
-    struct DeviceRoutes {
-        none: u64,
-        dac: u64,
-        fft: u64,
-        both: u64,
-    }
 
     let mut routes = vec![DeviceRoutes::default(); devices.len()];
     routes[svr_id].none = 1;
@@ -90,6 +82,14 @@ pub fn b(input: &str) -> u64 {
     }
 
     routes[out_id].both
+}
+
+#[derive(Debug, Default, Clone, Copy)]
+struct DeviceRoutes {
+    none: u64,
+    dac: u64,
+    fft: u64,
+    both: u64,
 }
 
 #[cfg(test)]
